@@ -1,15 +1,17 @@
 # serverless-plugin-typescript
+
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
 
 Serverless plugin for zero-config Typescript support
 
-## HEWMEN Update
+## mtwzim Update
+
 Original NPM Module: http://www.npmjs.com/package/serverless-plugin-typescript
 
 This version of `serverless-typescript-plugin` fixes symbolic link issues with Windows OS resulting in the following errors:
 
-> 1) EPERM: operation not permitted, scandir...
-> 2) EPERM: operation not permitted, symlink...
+> 1. EPERM: operation not permitted, scandir...
+> 2. EPERM: operation not permitted, symlink...
 
 When attaching the "node_modules" folder to the build
 
@@ -17,27 +19,29 @@ Created PR for original plugin: http://www.github.com/prismagraphql/serverless-p
 
 ## Features
 
-* Zero-config: Works out of the box without the need to install any other compiler or plugins
-* Supports ES2015 syntax + features (`export`, `import`, `async`, `await`, `Promise`, ...)
-* Supports `sls package`, `sls deploy` and `sls deploy function`
-* Supports `sls invoke local` + `--watch` mode
-* Integrates nicely with [`serverless-offline`](https://github.com/dherault/serverless-offline)
+- Zero-config: Works out of the box without the need to install any other compiler or plugins
+- Supports ES2015 syntax + features (`export`, `import`, `async`, `await`, `Promise`, ...)
+- Supports `sls package`, `sls deploy` and `sls deploy function`
+- Supports `sls invoke local` + `--watch` mode
+- Integrates nicely with [`serverless-offline`](https://github.com/dherault/serverless-offline)
 
 ## Install
 
 ```sh
-yarn add --dev @hewmen/serverless-plugin-typescript
+yarn add --dev @mtwzim/serverless-plugin-typescript
 ```
+
 or
+
 ```
-npm install --save-dev @hewmen/serverless-plugin-typescript
+npm install --save-dev @mtwzim/serverless-plugin-typescript
 ```
 
 Add the following plugin to your `serverless.yml`:
 
 ```yaml
 plugins:
-  - '@hewmen/serverless-plugin-typescript'
+  - "@mtwzim/serverless-plugin-typescript"
 ```
 
 ## Configure
@@ -70,7 +74,6 @@ The default `tsconfig.json` file used by the plugin looks like this:
 ### Including extra files
 
 All files from `package/include` will be included in the final build file. See [Exclude/Include](https://serverless.com/framework/docs/providers/aws/guide/packaging#exclude--include)
-
 
 ## Usage
 
@@ -108,15 +111,15 @@ The normal Serverless deploy procedure will automatically compile with Typescrip
 The plugin integrates very well with [serverless-offline](https://github.com/dherault/serverless-offline) to
 simulate AWS Lambda and AWS API Gateway locally.
 
-Add the plugins to your `serverless.yml` file and make sure that `@hewmen/serverless-plugin-typescript`
+Add the plugins to your `serverless.yml` file and make sure that `@mtwzim/serverless-plugin-typescript`
 precedes `serverless-offline` as the order is important:
+
 ```yaml
-  plugins:
-    ...
-    - '@hewmen/serverless-plugin-typescript'
-    ...
-    - serverless-offline
-    ...
+plugins: ...
+  - '@mtwzim/serverless-plugin-typescript'
+  ...
+  - serverless-offline
+  ...
 ```
 
 Run `serverless offline` or `serverless offline start` to start the Lambda/API simulation.
@@ -127,11 +130,12 @@ In comparison to `serverless offline`, the `start` command will fire an `init` a
 
 Configure your service the same as mentioned above, but additionally add the `serverless-dynamodb-local`
 plugin as follows:
+
 ```yaml
-  plugins:
-    - '@hewmen/serverless-plugin-typescript'
-    - serverless-dynamodb-local
-    - serverless-offline
+plugins:
+  - "@mtwzim/serverless-plugin-typescript"
+  - serverless-dynamodb-local
+  - serverless-offline
 ```
 
 Run `serverless offline start`.
@@ -166,10 +170,11 @@ yarn add --dev source-map-support
 
 ```ts
 // inside of your function
-import 'source-map-support/register'
+import "source-map-support/register";
 ```
 
 If you are using webpack (most likely). Add `devtool: 'source-map'` to `webpack.config.js`:
+
 ```js
 module.exports = {
   .... snip ....
@@ -178,9 +183,5 @@ module.exports = {
 
 }
 ```
-
-## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
-
-Join our [Slack community](http://slack.graph.cool/) if you run into issues or have questions. We love talking to you!
 
 ![](http://i.imgur.com/5RHR6Ku.png)

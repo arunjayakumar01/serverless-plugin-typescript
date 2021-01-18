@@ -1,11 +1,11 @@
 service: serverless-example
 
 plugins:
-  - serverless-plugin-typescript
+  - "@mtwzim/serverless-plugin-typescript"
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs12.x
 
 functions:
   hello:
