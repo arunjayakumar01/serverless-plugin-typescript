@@ -1,39 +1,39 @@
 export interface ServerlessInstance {
   cli: {
-    log(str: string)
-  }
+    log(str: string);
+  };
   config: {
-    servicePath: string
-  }
+    servicePath: string;
+  };
   service: {
     provider: {
-      name: string
-    }
-    functions: { [key: string]: ServerlessFunction }
-    package: ServerlessPackage
-    getAllFunctions: () => string[]
-  }
-  pluginManager: PluginManager
+      name: string;
+    };
+    functions: { [key: string]: ServerlessFunction };
+    package: ServerlessPackage;
+    getAllFunctions: () => string[];
+  };
+  pluginManager: PluginManager;
 }
 
 export interface ServerlessOptions {
-  function?: string
-  watch?: boolean
-  extraServicePath?: string
+  function?: string;
+  watch?: boolean;
+  extraServicePath?: string;
 }
 
 export interface ServerlessFunction {
-  handler: string
-  package: ServerlessPackage
+  handler: string;
+  package: ServerlessPackage;
 }
 
 export interface ServerlessPackage {
-  include: string[]
-  exclude: string[]
-  artifact?: string
-  individually?: boolean
+  include: string[];
+  exclude: string[];
+  artifact?: string;
+  individually?: boolean;
 }
 
 export interface PluginManager {
-  spawn(command: string): Promise<void>
+  spawn(command: string): Promise<void>;
 }
